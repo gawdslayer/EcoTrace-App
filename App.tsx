@@ -1,20 +1,37 @@
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { AuthProvider } from './src/contexts/AuthContext';
+import { AppDataProvider } from './src/contexts/AppDataContext';
+import { ErrorProvider } from './src/contexts/ErrorContext';
+import ErrorBoundary from './src/components/ErrorBoundary';
+import RootNavigator from './src/navigation/RootNavigator';
+import { platformSelect } from './src/utils/platform';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ErrorBoundary>
+      <ErrorProvider>
+        <AuthProvider>
+          <AppDataProvider>
+            <NavigationContainer>
+              <RootNavigator />
+              <StatusBar 
+                style={platformSelect({
+                  ios: 'dark',
+                  android: 'dark',
+                  default: 'auto',
+                })}
+                backgroundColor={platformSelect({
+                  ios: 'transparent',
+                  android: '#f0fdf4', // Match our background color
+                  default: 'transparent',
+                })}
+              />
+            </NavigationContainer>
+          </AppDataProvider>
+        </AuthProvider>
+      </ErrorProvider>
+    </ErrorBoundary>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
