@@ -97,8 +97,7 @@ const developmentConfig: AppConfig = {
     USER_ACTION: 3000,
   },
   
-  // Development Configuration
-  IS_LOCAL_TESTING: false, // Set to true for local development
+  IS_LOCAL_TESTING: false,
   ENABLE_LOGGING: true,
 };
 
@@ -147,9 +146,8 @@ const productionConfig: AppConfig = {
     USER_ACTION: 3000,
   },
   
-  // Production Configuration
   IS_LOCAL_TESTING: false,
-  ENABLE_LOGGING: false, // Disable verbose logging in production
+  ENABLE_LOGGING: false,
 };
 
 /**

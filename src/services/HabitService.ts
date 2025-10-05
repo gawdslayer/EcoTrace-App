@@ -89,10 +89,8 @@ export class HabitService {
     }
   }
 
-  // Get user's habit completion history (mock for now)
   static async getHabitHistory(userId: number): Promise<unknown[]> {
     try {
-      // TODO: Implement when backend supports habit history
       return [];
     } catch (error) {
       const errorMessage = getErrorMessage(error);
@@ -104,10 +102,8 @@ export class HabitService {
     }
   }
 
-  // Calculate habit streaks (mock for now)
   static calculateHabitStreak(): number {
-    // TODO: Implement streak calculation logic
-    return Math.floor(Math.random() * 7) + 1; // Mock streak 1-7 days
+    return Math.floor(Math.random() * 7) + 1;
   }
 
   // Get habit statistics

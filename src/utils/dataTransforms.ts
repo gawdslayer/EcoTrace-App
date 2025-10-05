@@ -77,7 +77,7 @@ export const calculateUserStats = (user: User, allUsers: User[]): UserStats => {
   return {
     totalPoints: user.totalImpactPoints,
     completedHabits: user.trackedHabits.length,
-    currentStreak: Math.floor(user.totalImpactPoints / 10), // Mock streak calculation
+    currentStreak: Math.floor(user.totalImpactPoints / 10),
     rank: userRank,
     completionRate: Math.round(completionRate),
   };

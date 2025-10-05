@@ -65,14 +65,6 @@ export const removeAuthToken = async (): Promise<void> => {
   }
 };
 
-// DEPRECATED: Generic cache functions - Use dataCache.ts instead
-// These functions have been removed to consolidate caching through dataCache.ts
-// Migration: Use dataCache.set(), dataCache.get(), and dataCache.delete() instead
-// 
-// Previous functions removed:
-// - storeCache() -> use dataCache.set()
-// - getCache() -> use dataCache.get() 
-// - removeCache() -> use dataCache.delete()
 
 // Clear all app data
 export const clearAllData = async (): Promise<void> => {

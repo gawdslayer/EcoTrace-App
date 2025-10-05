@@ -157,7 +157,6 @@ export const AppDataProvider: React.FC<AppDataProviderProps> = ({ children }) =>
   useAppFocus({
     onFocus: useCallback(() => {
       if (isAuthenticated && isDataStale()) {
-        console.log('App focused and data is stale, refreshing...');
         refreshData(false); // Don't force, use cache if available
       }
     }, [isAuthenticated]),
@@ -179,7 +178,6 @@ export const AppDataProvider: React.FC<AppDataProviderProps> = ({ children }) =>
     try {
       // If not forcing and we have fresh cached data, use it
       if (!force && !isDataStale()) {
-        console.log('Data is fresh, skipping refresh');
         return;
       }
 
@@ -329,7 +327,6 @@ export const AppDataProvider: React.FC<AppDataProviderProps> = ({ children }) =>
   const clearCache = useCallback(async (): Promise<void> => {
     try {
       await dataCache.clear();
-      console.log('All cached data cleared');
     } catch (error) {
       logError(error, 'AppDataContext.clearCache', { 
         cacheKeysAttempted: Object.values(CACHE_KEYS) 

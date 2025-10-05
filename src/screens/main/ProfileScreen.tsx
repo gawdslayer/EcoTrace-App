@@ -35,7 +35,6 @@ export default function ProfileScreen({ navigation }: ProfileScreenProps) {
   // Calculate user statistics
   const userStats = user ? calculateUserStats(user, users) : null;
 
-  // Mock achievements data (in a real app, this would come from the backend)
   const achievements = useMemo(() => [
     {
       id: 1,
@@ -81,7 +80,7 @@ export default function ProfileScreen({ navigation }: ProfileScreenProps) {
       icon: 'calendar' as const,
       color: '#ef4444',
       earned: false,
-      progress: Math.floor(Math.random() * 20) + 5, // Mock progress
+      progress: Math.floor(Math.random() * 20) + 5,
       maxProgress: 30,
     },
   ], [user, userStats]);

@@ -21,12 +21,10 @@ export default function LoginScreen({ navigation }: AuthScreenProps) {
   const validateForm = (): boolean => {
     let isValid = true;
     
-    // Clear previous errors
     setEmailError('');
     setPasswordError('');
     clearError();
     
-    // Email validation
     if (!email.trim()) {
       setEmailError('Email is required');
       isValid = false;
@@ -35,7 +33,6 @@ export default function LoginScreen({ navigation }: AuthScreenProps) {
       isValid = false;
     }
     
-    // Password validation
     if (!password.trim()) {
       setPasswordError('Password is required');
       isValid = false;
@@ -54,16 +51,13 @@ export default function LoginScreen({ navigation }: AuthScreenProps) {
 
     try {
       await login(email.trim(), password);
-      // Navigation will happen automatically via AuthContext
     } catch (error) {
-      // Error is handled by AuthContext and displayed via error state
       logError(error, 'LoginScreen.handleLogin');
     }
   };
 
   const handleTestLogin = async () => {
     try {
-      // Use test credentials that exist in your backend
       await login('eco@example.com', 'password123');
     } catch {
       Alert.alert('Test Login Failed', 'Make sure your backend server is running on localhost:3001');

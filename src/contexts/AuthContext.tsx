@@ -161,7 +161,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   // Login function with retry logic
   const login = async (email: string, password: string): Promise<void> => {
     try {
-      console.log('AuthContext: Starting login for:', email);
       dispatch({ type: 'SET_LOADING', payload: true });
       
       const user = await withRetry(
@@ -169,7 +168,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         retryConfigs.userAction
       );
       
-      console.log('AuthContext: Login successful for user:', user.username);
       
       // Store user data and auth token
       await storeUser(user);
